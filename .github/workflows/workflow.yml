@@ -30,8 +30,8 @@ jobs:
 
       - name: terraform plan
         run: |
-        terraform plan -input=false -no-color -out=tfplan \
-        && terraform show -no-color tfplan
+          terraform plan -input=false -no-color -out=tfplan \
+          && terraform show -no-color tfplan
 
       - name: Apply Terraform
         if: steps.plan.outcome == 'success'
