@@ -13,6 +13,7 @@ resource "aws_s3_bucket" "state_terraform_aws" {
 
    tags = {
     Description = "bucket para guardar o tf state"
+    EmailOwner  = "andrew.cm.sp@gmail.com"
    } 
 
 }
