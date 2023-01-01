@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "website" {
+resource "aws_s3_bucket" "state_terraform_aws" {
   bucket = "infrawebsiteandrewchan"
   acl    = "public-read"
   
@@ -14,8 +14,8 @@ resource "aws_s3_bucket" "website" {
 
 }
 
-resource "aws_s3_bucket_policy" "website" {
-  bucket = aws_s3_bucket.website.id
+resource "aws_s3_bucket_policy" "state_terraform_aws" {
+  bucket = aws_s3_bucket.state_terraform_aws.id
   policy = data.aws_iam_policy_document.allow_public_access.json
 }
 
@@ -31,13 +31,13 @@ data "aws_iam_policy_document" "allow_public_access" {
     ]
 
     resources = [
-      "${aws_s3_bucket.website.arn}/*",
+      "${aws_s3_bucket.state_terraform_aws.arn}/*",
     ]
   }
 }
 
-resource "aws_s3_bucket_website_configuration" "website" {
-  bucket = aws_s3_bucket.website.bucket
+resource "aws_s3_bucket_website_configuration" "state_terraform_aws" {
+  bucket = aws_s3_bucket.state_terraform_aws.bucket
 
   index_document {
     suffix = "index.html"
@@ -49,7 +49,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 resource "aws_s3_object" "index_page" {
-  bucket       = aws_s3_bucket.website.id
+  bucket       = aws_s3_bucket.state_terraform_aws.id
   key          = "index.html"
   content_type = "text/html; charset=UTF-8"
   source       = "../src/index.html"
@@ -57,7 +57,7 @@ resource "aws_s3_object" "index_page" {
 }
 
 resource "aws_s3_object" "error_page" {
-  bucket       = aws_s3_bucket.website.id
+  bucket       = aws_s3_bucket.state_terraform_aws.id
   key          = "error.html"
   content_type = "text/html; charset=UTF-8"
   source       = "../src/error.html"
@@ -66,13 +66,13 @@ resource "aws_s3_object" "error_page" {
 
 
 output "bucket_name" {
-    value = aws_s3_bucket.website.bucket
+    value = aws_s3_bucket.state_terraform_aws.bucket
 }
 
 output "bucket_ARN" {
-    value = aws_s3_bucket.website.arn
+    value = aws_s3_bucket.state_terraform_aws.arn
 }
 
 output "url" {
-  value = aws_s3_bucket_website_configuration.website.website_endpoint
+  value = aws_s3_bucket_website_configuration.state_terraform_aws.website_endpoint
 }
