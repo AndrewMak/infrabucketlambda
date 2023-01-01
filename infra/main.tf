@@ -8,7 +8,7 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "state_terraform_aws" {
-  bucket = "andrew-state-terraform1"
+  bucket = "infrawebsiteandrewchan"
   acl    = "private"
   
   versioning {
