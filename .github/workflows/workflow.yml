@@ -41,7 +41,7 @@ jobs:
         if: steps.plan.outcome == 'success'
         id: apply
         continue-on-error: true
-        working-directory: ./terraform
+        working-directory: ./infra
         run: |
           terraform apply \
             -input=false \
