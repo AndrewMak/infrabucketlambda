@@ -66,11 +66,11 @@ resource "aws_s3_object" "error_page" {
 
 
 output "bucket_name" {
-    value = aws_s3_bucket.state_terraform_aws.bucket
+    value = aws_s3_bucket.website.bucket
 }
 
 output "bucket_ARN" {
-    value = aws_s3_bucket.state_terraform_aws.arn
+    value = aws_s3_bucket.website.arn
 }
 
 output "url" {
