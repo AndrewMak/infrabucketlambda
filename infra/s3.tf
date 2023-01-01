@@ -53,7 +53,7 @@ resource "aws_s3_object" "index_page" {
   key          = "index.html"
   content_type = "text/html; charset=UTF-8"
   source       = "../src/index.html"
-  etag         = filemd5("src/index.html")
+  etag         = filemd5("../src/index.html")
 }
 
 resource "aws_s3_object" "error_page" {
