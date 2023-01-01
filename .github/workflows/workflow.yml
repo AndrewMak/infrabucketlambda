@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Upload to S3
-        run: |
-          aws s3 mb s3://andrew1994832843299
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.7
+      - name: terraform init
+        run: terraform init
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
