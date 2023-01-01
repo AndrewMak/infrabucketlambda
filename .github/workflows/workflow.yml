@@ -23,7 +23,7 @@ jobs:
         continue-on-error: true
 
       - name: terraform init
-        run: terraform init
+        run: terraform init -backend=true -backend-config=variables/dev/backend.hcl
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color

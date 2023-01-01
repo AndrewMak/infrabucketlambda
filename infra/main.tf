@@ -1,11 +1,3 @@
-terraform {
-  backend "s3" {
-  bucket  = "andrew-state-terraform"
-  key     = "tfstate/terraform.tfstate"
-  region  = "us-east-1"
-}
-
-}
 provider "aws" {
     region = "us-east-1"
 }
