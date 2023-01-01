@@ -33,7 +33,7 @@ jobs:
         run: terraform validate -no-color
 
       - name: terraform plan
-         id: plan
+        id: plan
         run: |
           terraform plan -input=false -no-color -out=tfplan \
           && terraform show -no-color tfplan
